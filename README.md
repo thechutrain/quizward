@@ -28,7 +28,7 @@ $ npm run test-db
 ```
 
 ## ERD
-![link](notes/quizwardERD.png)
+![link](.notes/quizwardERD.png)
 
 ## Contributors
 * **Alex Rosenkranz** 
