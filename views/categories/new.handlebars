@@ -1,0 +1,22 @@
+<h1>Add a new category.</h1>
+<form method="POST" action="categories/new">
+
+  <div class="form-group">
+    <label for="name">Category Name:</label>
+    <input class="form-control" type="text" name="name" placeholder="Category Name"/>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea class="form-control" name="description" placeholder="Describe the category (optional)."></textarea>
+  </div>
+
+   <div class="form-group">
+    <label for="image">File input</label>
+    <input class="form-control" type="file" id="image">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit New Category</button>
+</form>
+

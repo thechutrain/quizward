@@ -8,7 +8,10 @@ var exphbs = require('express-handlebars');
 
 // lib
 var Models = require('./models');
-var defaultController = require('./controllers/defaultController.js')
+var defaultController = require('./controllers/defaultController.js');
+var quizController = require('./controllers/quizController.js');
+var categoryController = require('./controllers/categoryController.js');
+
 
 // Create app
 var app = express();
@@ -32,11 +35,12 @@ app.use(methodOverride('_method'));
 
 // Routers
 app.use('/', defaultController);
+app.use('/quizzes', quizController);
+app.use('/categories', categoryController);
 
 // Create Server
-Models.sequelize.sync().then(function(){
-  app.listen(PORT, function(){
+Models.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
     console.log(`Listening on PORT: ${PORT}`);
   });
 });
-
