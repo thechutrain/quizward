@@ -1,3 +1,4 @@
 # Quizward
 
 ## Contributors
+Alex Rosenkranz 
