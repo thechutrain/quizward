@@ -9,7 +9,7 @@ var exphbs = require('express-handlebars');
 // lib
 var Models = require('./models');
 var defaultController = require('./controllers/defaultController');
-var quizController = require('./controllers/quizController.js');
+var quizController = require('./controllers/quizController');
 var categoryController = require('./controllers/categoryController');
 var authController = require('./controllers/authController');
 
