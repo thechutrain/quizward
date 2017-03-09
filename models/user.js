@@ -37,7 +37,8 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true,
       classMethods: {
         associate: function(models) {
-          User.belongsToMany(models.Quiz, { through: 'UserQuiz', foreignKey: 'user_id' })
+          User.belongsToMany(models.Quiz, { through: 'UserQuiz', foreignKey: 'user_id' });
+          User.belongsToMany(models.Category, { through: 'UserCategory', foreignKey: 'user_id' });
         }
       } // end classMethods
     }); // end .define
