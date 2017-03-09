@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Quiz = sequelize.define('Quiz',
+  var Category = sequelize.define('Category',
       // columns
       {
         name: {
@@ -8,10 +8,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         description: {
           type: DataTypes.TEXT,
-        },
-        made_by: {
-          type: DataTypes.INTEGER,
-          // ??? WAY TO LINK AS A FOREIGN KEY TO USER ???
         }
       },
       // options
@@ -20,11 +16,12 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true,
         classMethods: {
           associate: function(models) {
-            Quiz.belongsToMany(models.User, { through: 'UserQuiz', foreignKey: 'quiz_id' });
-            Quiz.belongsToMany(models.Category, { through: 'QuizCategory', foreignKey: 'quiz_id' });
+            Category.belongsToMany(models.User, { through: 'UserCategory', foreignKey: 'category_id' });
+            Category.belongsToMany(models.Quiz, { through: 'QuizCategory', foreignKey: 'category_id' });
+            // Quiz.hasMany(models.Question);
           }
         } // end classMethods
       }
     ) // end .define
-  return Quiz;
+  return Category;
 }
