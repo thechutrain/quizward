@@ -1,0 +1,27 @@
+
+{{#if logged_in }}
+<h2>You are signed in as: <strong>{{ user }} </strong></h2>
+{{ else }}
+<h2>You are signed in as: <strong>Guest </strong></h2>
+{{/if}}
+
+<h4>Test View</h4>
+<p>auth/test.handlebars view template</p>
+
+<ul>
+  <li>
+    <p> View current session: <a href="http://localhost:3000/auth/session">link</a></p>
+  </li>
+  <li>
+    <p> View all users: <a href="http://localhost:3000/auth/test">link</a></p>
+  </li>
+  <li>
+    <p> Sign up: <a href="http://localhost:3000/auth/signup">link</a></p>
+  </li>
+    <li>
+    <p> Sign in: <a href="http://localhost:3000/auth/signin">link</a></p>
+  </li>
+  <li>
+    <p> Log out: <a href="http://localhost:3000/auth/signout">link</a></p>
+  </li>
+</ul>

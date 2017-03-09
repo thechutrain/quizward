@@ -8,9 +8,10 @@ var exphbs = require('express-handlebars');
 
 // lib
 var Models = require('./models');
-var defaultController = require('./controllers/defaultController.js');
+var defaultController = require('./controllers/defaultController');
 var quizController = require('./controllers/quizController.js');
-var categoryController = require('./controllers/categoryController.js');
+var categoryController = require('./controllers/categoryController');
+var authController = require('./controllers/authController');
 
 
 // Create app
@@ -29,6 +30,16 @@ app.use(session({
   saveUninitialized: true,
 }));
 app.use(cookieParser());
+// make session available;
+app.use(function(req, res, next){
+  res.locals.request = req;
+  if (req.session != null && req.session.user_id != null){
+    res.locals.user = req.session.username;
+    // res.locals.user = req.session.username; // user id
+    res.locals.logged_in = true;
+  }
+  next(null, req, res);
+});
 app.use(express.static(path.join(process.cwd(), '/public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -37,6 +48,7 @@ app.use(methodOverride('_method'));
 app.use('/', defaultController);
 app.use('/quizzes', quizController);
 app.use('/categories', categoryController);
+app.use('/auth', authController);
 
 // Create Server
 Models.sequelize.sync().then(function() {
