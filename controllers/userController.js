@@ -1,8 +1,9 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
 var Models = require('../Models');
-
+var bodyParser = require('body-parser');
 var router = express.Router();
+router.use(bodyParser.urlencoded({ extended: false }));
 
 // =========== GET ROUTES ===========
 // TEST ROUTE --- comment out later

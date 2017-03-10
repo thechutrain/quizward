@@ -4,6 +4,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
+const multer = require('multer');
 var exphbs = require('express-handlebars');
 
 // lib
@@ -31,9 +32,9 @@ app.use(session({
 }));
 app.use(cookieParser());
 // make session available;
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
   res.locals.request = req;
-  if (req.session != null && req.session.user_id != null){
+  if (req.session != null && req.session.user_id != null) {
     res.locals.user = req.session.username;
     // res.locals.user = req.session.username; // user id
     res.locals.logged_in = true;

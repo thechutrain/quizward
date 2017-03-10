@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
   console.log('loaded');
-  $(document).on('click', 'button', function(e) {
-    e.preventDefault();
-  });
+
 
   function newChoice() {
     let choiceContainer = $(this).parent().find('.choice-container');
