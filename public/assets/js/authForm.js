@@ -1,37 +1,78 @@
-$(document).ready(function() {
-  console.log('loaded form.js');
+$(document).ready(function(){
+  // get references to form
+  var loginForm = $('form.login-form');
+  var signupForm = $('form.signup-form');
+  var usernameInput = $('input#username-input');
+  var emailInput = $('input#email-input');
+  var passwordInput = $('input#password-input');
 
-  $(document).on('click', '.btn-submit', function(e) {
-    // 1.) prevent default page load
-    e.preventDefault();
+  // =========== EVENT LISTENERS ===========
+  // Event Listeners - login form submission
+  loginForm.on('submit', function(event){
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+    // TO DO - add proper validators!
+    loginUser(userData.email, userData.password);
+    emailInput.val('');
+    passwordInput.val('');
+  }); // closes on submit event
 
-    // 2) get all the form inputs
-    var formObj = {};
-    $(this).parent().find("input").each(function( index ){
-      var key = $(this).attr('name');
-      formObj[key] =  $(this).val().trim();
+  // Event Listeners - signup form submission
+  signupForm.on('submit', function(event){
+    event.preventDefault();
+    // debugger;
+    var userData = {
+      username: usernameInput.val().trim(),
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+    // TO DO - add proper validators!
+    signupUser(userData.username, userData.email, userData.password);
+    usernameInput.val('');
+    emailInput.val('');
+    passwordInput.val('');
+  }); // closes on submit event
+
+  // =========== Helper Functions ===========
+  // signUp - helper function
+  function signupUser(username, email, password) {
+    $.post('/auth/signup', {
+      username: username,
+      email: email,
+      password: password,
     })
+    .then(function(result){
+      if (result.url) {
+        window.location.replace(result.url);
+      } 
+      else {
+        console.log(result);
+      }
+    })
+  };
 
-    // 3.) make $ajax call
-    var pathname = formObj.pathname;
-    delete formObj.url;
-    var origin = window.location.origin;
-    var href = origin + pathname;
+  // login - helper function
+  function loginUser(email, password) {
     $.ajax({
       method: 'POST',
-      url: href,
-      data: formObj
-    }).then(function(result){
-      if (result.signed_in){
-        // redirect
-        window.location = origin + '/auth';
-      } else {
-        // window.location = origin + '/auth/signin';
-        alert('Sorry there was an error logginging you in');
+      url: '/auth/login',
+      data: {
+        email: email,
+        password: password,  
       }
-    });
-
-  });
-
+    })
+    .then(function(result){
+      if (result.url) {
+        window.location.replace(result.url);
+      } else {
+        console.log(result);
+      }
+    }).catch(function(err){
+      console.log(err);
+    })
+  };
 
 });

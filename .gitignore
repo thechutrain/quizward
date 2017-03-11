@@ -1,6 +1,5 @@
 node_modules/
-config/
-config.json
+config/config.json
 .vscode
 # misc
 .DS_Store

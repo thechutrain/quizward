@@ -1,3 +1,5 @@
+// var bcrypt = require('bcryptjs');
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User',
     // columns of table
@@ -35,6 +37,17 @@ module.exports = function(sequelize, DataTypes) {
     {
       underscored: true,
       freezeTableName: true,
+      // instanceMethods: {
+      //   validPassword: function(password) {
+      //     return bcrypt.compareSync(password, this.password);
+      //   }
+      // },
+      // hooks: {
+      //   beforeCreate: function(user, options, cb) {
+      //     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+      //     cb(null, options);
+      //   }
+      // }
       classMethods: {
         associate: function(models) {
           User.belongsToMany(models.Quiz, { through: 'UserQuiz', foreignKey: 'user_id' });
