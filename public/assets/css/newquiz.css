@@ -1,0 +1,20 @@
+.new-quiz {
+  margin-bottom: 20px;
+}
+
+.section-break {
+  border-bottom: 2px dotted #000000;
+  padding-bottom: 20px;
+}
+
+.choice-container .row {
+  margin-bottom: 5px;
+}
+
+.question-label {
+  font-size: 20px;
+}
+
+.answers {
+  margin-top: 10px;
+}

@@ -1,97 +1,179 @@
-<h1>Add a new quiz.</h1>
-<form>
-{{!----}}
-  <div class="form-group">
-    <label for="name">Quiz Name:</label>
-    <input class="form-control" type="text" name="name" placeholder="Quiz Name"/>
-  </div>
-{{!----}}
-  <div class="form-group">
-    <label for="description">Description:</label>
-    <textarea class="form-control" name="description" placeholder="Describe the quiz."></textarea>
-  </div>
-{{!----}}
-  <div class="form-group q1">
-     <label for="question">What is your question?</label>
-     <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+<div class="col-sm-12 col-md-8">
+  <h1>Add a new quiz.</h1>
+  <form class="new-quiz">
+  {{!----}}
+    <div class="form-group ">
+      <label class="question-label" for="name">Quiz Name:</label>
+      <input class="form-control quiz-name" type="text" name="name" placeholder="Quiz Name"/>
+    </div>
+  {{!----}}
+    <div class="form-group ">
+      <label class="question-label" for="category">Category:</label>
+      <select class="form-control quiz-categories"></select>
+    </div>
+  {{!----}}
+    <div class="form-group section-break">
+      <label class="question-label" for="description">Description:</label>
+      <textarea class="form-control quiz-description" name="description" placeholder="Describe the quiz."></textarea>
+    </div>
+  {{!----}}
+    <div class="form-group q1 question section-break">
+      <label class="question-label" for="question">What is your question?</label>
+      <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+      <label class="question-label" for="answer">What is the answer?</label>
+      <input class="form-control answer" type="text" name="answer" placeholder="What's your answer?"/>
 
-    <div class="form-group">
-      <label for="choices">What are the possible answers?</label>
-      <div class="choice-container">
-        <input class="form-control" type="text" name="1" placeholder="Choice" />
-        <input class="form-control" type="text" name="2" placeholder="Choice" />
+      <label class="question-label" for="explanation">Explain the answer.</label>
+      <textarea class="form-control explanation" name="explanation" placeholder="Why is this the right answer?"></textarea>
+
+      <div class="form-group answers">
+        <label for="choices">What are the possible answers?</label>
+      <div class="row">
+        <div class="choice-container col-sm-12 col-md-8">
+          <div class="row">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="1" placeholder="Choice" />
+            </div>
+          </div>
+          <div class="row copy-choice">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="2" placeholder="Choice" />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <a class="btn btn-default add-choice">Add Choice</a>
+        <a class="btn btn-default add-choice">Add Choice</a>
+      </div>
     </div>
-  </div>
-{{!----}}
-  <div class="form-group q2">
-    <label for="question">What is your question?</label>
+  {{!----}}
+    <div class="form-group q2 question section-break">
+      <label class="question-label" for="question">What is your question?</label>
+      <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+      <label class="question-label" for="answer">What is the answer?</label>
+      <input class="form-control answer" type="text" name="answer" placeholder="What's your answer?"/>
+
+      <label class="question-label" for="explanation">Explain the answer.</label>
+      <textarea class="form-control explanation" name="explanation" placeholder="Why is this the right answer?"></textarea>
+      
+      <div class="form-group">
+        <label for="choices">What are the possible answers?</label>
+      <div class="row">
+        <div class="choice-container col-sm-12 col-md-8">
+          <div class="row">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="1" placeholder="Choice" />
+            </div>
+          </div>
+          <div class="row copy-choice">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="2" placeholder="Choice" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <a class="btn btn-default add-choice">Add Choice</a>
+      </div>
+    </div>
+  {{!----}}
+  <div class="form-group q3 question section-break">
+    <label class="question-label" for="question">What is your question?</label>
     <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
-    
-    <div class="form-group">
+    <label class="question-label" for="answer">What is the answer?</label>
+    <input class="form-control answer" type="text" name="answer" placeholder="What's your answer?"/>
+
+    <label class="question-label" for="explanation">Explain the answer.</label>
+    <textarea class="form-control explanation" name="explanation" placeholder="Why is this the right answer?"></textarea>
+
+    <div class="form-group answers">
       <label for="choices">What are the possible answers?</label>
-      <div class="choice-container">
-        <input class="form-control" type="text" name="1" placeholder="Choice" />
-        <input class="form-control" type="text" name="2" placeholder="Choice" />
+      <div class="row">
+        <div class="choice-container col-sm-12 col-md-8">
+          <div class="row">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="1" placeholder="Choice" />
+            </div>
+          </div>
+          <div class="row copy-choice">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="2" placeholder="Choice" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <a class="btn btn-default add-choice">Add Choice</a>
     </div>
   </div>
-{{!----}}
-<div class="form-group q3">
-  <label for="question">What is your question?</label>
-  <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+  {{!----}}
+  <div class="form-group q4 question section-break">
+    <label class="question-label" for="question">What is your question?</label>
+    <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+    <label class="question-label" for="answer">What is the answer?</label>
+    <input class="form-control answer" type="text" name="answer" placeholder="What's your answer?"/>
 
-  <div class="form-group">
-    <label for="choices">What are the possible answers?</label>
-    <div class="choice-container">
-      <input class="form-control" type="text" name="1" placeholder="Choice" />
-      <input class="form-control" type="text" name="2" placeholder="Choice" />
+    <label class="question-label" for="explanation">Explain the answer.</label>
+    <textarea class="form-control explanation" name="explanation" placeholder="Why is this the right answer?"></textarea>
+
+    <div class="form-group answers">
+      <label for="choices">What are the possible answers?</label>
+      <div class="row">
+        <div class="choice-container col-sm-12 col-md-8">
+          <div class="row">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="1" placeholder="Choice" />
+            </div>
+          </div>
+          <div class="row copy-choice">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="2" placeholder="Choice" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="btn btn-default add-choice">Add Choice</a>
     </div>
-
-    <a class="btn btn-default add-choice">Add Choice</a>
   </div>
-</div>
-{{!----}}
-<div class="form-group q4">
-  <label for="question">What is your question?</label>
-  <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+  {{!----}}
+  <div class="form-group q5 question section-break">
+    <label class="question-label" for="question">What is your question?</label>
+    <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+    <label class="question-label" for="answer">What is the answer?</label>
+    <input class="form-control answer" type="text" name="answer" placeholder="What's your answer?"/>
 
-  <div class="form-group">
-    <label for="choices">What are the possible answers?</label>
-    <div class="choice-container">
-      <input class="form-control" type="text" name="1" placeholder="Choice" />
-      <input class="form-control" type="text" name="2" placeholder="Choice" />
+    <label class="question-label" for="explanation">Explain the answer.</label>
+    <textarea class="form-control explanation" name="explanation" placeholder="Why is this the right answer?"></textarea>
+
+    <div class="form-group answers">
+      <label for="choices">What are the possible answers?</label>
+      <div class="row">
+        <div class="choice-container col-sm-12 col-md-8">
+          <div class="row">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="1" placeholder="Choice" />
+            </div>
+          </div>
+          <div class="row copy-choice">
+            <div class="col-sm-9">
+          <input class="form-control" type="text" name="2" placeholder="Choice" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="btn btn-default add-choice">Add Choice</a>
     </div>
-
-    <a class="btn btn-default add-choice">Add Choice</a>
   </div>
-</div>
-{{!----}}
-<div class="form-group q5">
-  <label for="question">What is your question?</label>
-  <textarea class="form-control" name="question" placeholder="What's your question?"></textarea>
+  {{!----}}
+  <div class="additional-questions">
 
-  <div class="form-group">
-    <label for="choices">What are the possible answers?</label>
-    <div class="choice-container">
-      <input class="form-control" type="text" name="1" placeholder="Choice" />
-      <input class="form-control" type="text" name="2" placeholder="Choice" />
-    </div>
-
-    <a class="btn btn-default add-choice">Add Choice</a>
   </div>
-</div>
-{{!----}}
-<div class="additional-questions">
+  {{!----}}
+  <button class="btn btn-default add-question">Add Another Question</button>
+  <button type="submit" class="btn btn-primary submit-quiz">Submit New Quiz</button>
 
+  {{!----}}
+  </form>
 </div>
-{{!----}}
-<button class="btn btn-default add-question">Add Another Question</button>
-<button type="submit" class="btn btn-primary">Submit New Quiz</button>
-
-{{!----}}
-</form>

@@ -15,7 +15,6 @@ var categoryController = require('./controllers/categoryController');
 var passport = require('./config/passport');
 var passController = require('./controllers/passController');
 
-
 // Create app
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -32,10 +31,23 @@ app.use(session({
   saveUninitialized: true,
 }));
 app.use(cookieParser());
+
+// make session available;
+app.use(function(req, res, next) {
+  res.locals.request = req;
+  if (req.session != null && req.session.user_id != null) {
+    res.locals.user = req.session.username;
+    // res.locals.user = req.session.username; // user id
+    res.locals.logged_in = true;
+  }
+  next(null, req, res);
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(express.static(path.join(process.cwd(), '/public')));
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 // Routers
@@ -46,7 +58,7 @@ app.use('/auth', passController);
 
 
 // Create Server
-Models.sequelize.sync().then(function() {
+Models.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log(`Listening on PORT: ${PORT}`);
   });
