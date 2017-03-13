@@ -1,4 +1,7 @@
 # Quizward
+> a public quizing application
+
+This node.js app allows users to take quizzess, and make quizzess.
 
 ## Quick start
 
