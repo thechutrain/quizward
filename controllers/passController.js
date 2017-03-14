@@ -11,8 +11,6 @@ router.use(jsonParse);
 // lib
 var passport = require('../config/passport');
 
-
-
 // ============= TESTING ROUTES =========
 router.get('/test', (req, res) => {
   // some db query
@@ -54,7 +52,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   res.json({ url: '/auth' });
 });
 
-router.post('/signup', function(req, res) {
+router.post('/signup', jsonParse, function(req, res) {
   // define variables
   var errors = [];
   var validData, uniqueUser, properHash; // promises 
