@@ -9,7 +9,7 @@ router.use(jsonParse);
 
 // Routers
 router.get('/', function(req, res) {
-  res.render('home');
+  res.render('home', { user: req.user });
 })
 
 module.exports = router;
