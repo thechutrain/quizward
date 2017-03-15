@@ -51,6 +51,7 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
           User.belongsToMany(models.Quiz, { through: 'UserQuiz', foreignKey: 'user_id' });
+          User.belongsToMany(models.Quiz, { through: 'Comment', foreignKey: 'user_id' });
           User.belongsToMany(models.Category, { through: 'UserCategory', foreignKey: 'user_id' });
           User.hasMany(models.Post);
         }

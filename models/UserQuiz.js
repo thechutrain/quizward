@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       {
         score: {
           type: DataTypes.DECIMAL(5, 2),
-        }
+        },
       },
       // options
       {

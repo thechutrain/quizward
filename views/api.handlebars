@@ -1,0 +1,94 @@
+<h2>API DOCUMENTATION</h2>
+
+{{!-- =============== CATEGORIES =================== --}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Categories</h3>
+  </div>
+  <div class="panel-body">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> <code>'api/categories/:id?' </code></h4>
+        <p> If not given an id (ex. GET "/api/categories") returns an array of all category objects in database</p>
+        <p> When given an id, (ex. GET "/api/categories/2") returns a single category object</p>
+        <p> *If you request a single category object that doesn't exist, returns NULL</p>
+      </li>
+
+    </ul>
+
+  </div>
+</div>
+
+{{!-- =============== USERS =================== --}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Users</h3>
+  </div>
+  <div class="panel-body">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> <code>'api/users/:id?' </code></h4>
+        <p> If not given an id (ex. GET "/api/users") returns an array of all users objects in database</p>
+        <p> When given an id, (ex. GET "/api/users/2") returns a single category object</p>
+        <p> *If you request a single category object that doesn't exist, returns NULL</p>
+        <p>* Excludes the password_hash for return all users, but not for indiviual user</p>
+      </li>
+      <li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> <code>'api/users/:user_id/categories' </code></h4>
+        <p> Returns a User object, that has a property of <code>Categories</code> which is an array of category objects</p>
+        <p> * if its not a valid user_id, it will return NULL </p>
+      </li>
+
+    </ul>
+
+  </div>
+</div>
+
+{{!-- =============== QUIZ =================== --}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Quiz</h3>
+  </div>
+  <div class="panel-body">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> <code>'api/quiz/:id?' </code></h4>
+        <p>the id is optional, when not given all quizzess from the database are returned (an array of objects )or an empty array</p>
+        <p>When a specified id is given, a quiz object is returned or null</p> 
+      </li>
+      <li class="list-group-item">
+        <h4> <span class="label label-info">POST</span> <code>'api/quiz/new'</code></h4>
+        <p> Data should be an object with three keys:</p>
+        <p><code> var data = { quiz, categories, questions } </code></p>
+        <p> *note these keys should be stringified!</p>
+      </li>
+      {{!--<li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> '/users/:user_id/categories' </h4>
+        <p> Returns a User object, that has a property of <code>Categories</code> which is an array of category objects</p>
+        <p> * if its not a valid user_id, it will return NULL </p>
+      </li>--}}
+
+    </ul>
+
+  </div>
+</div>
+
+{{!--<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Panel title</h3>
+  </div>
+  <div class="panel-body">
+
+    <ul class="list-group">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Morbi leo risus</li>
+      <li class="list-group-item">Porta ac consectetur ac</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+
+  </div>
+</div>--}}

@@ -23,52 +23,38 @@ $(document).ready(function() {
     choiceContainer.append(newChoice);
   }
 
-  // Make Quiz
-  function createQuiz() {
-    var newQuiz = {};
-    newQuiz.category = []
-    newQuiz.name = $("[name=name]").val();
-    $('.quiz-categories option:selected').each(function() {
-      newQuiz.category.push(parseInt($(this).attr('category-id')));
-    });
-    newQuiz.description = $('.quiz-description').val();
-    newQuiz.category = JSON.stringify(newQuiz.category);
-    $.ajax({
-      method: 'POST',
-      url: '/quizzes/create',
-      data: newQuiz
-    }).then(function(result) {
-      // Passes Quiz Id to Questions
-      createQuestions(result);
-    });
-  }
+  // ------------ Alan's Helper functions ----------------
+  function getQuizData(){
+      var newQuiz = {};
+      newQuiz.name = $("[name=name]").val();
+      newQuiz.description = $('.quiz-description').val();
+      return newQuiz;
+  };
 
-  // Make Questions 
-  function createQuestions(r) {
-    var fullQuestionList = {};
-    var questionList = [];
-    $('.question').each(function() {
-      var questionItem = {};
-      questionItem.quiz_id = r.id;
-      questionItem.question = $(this).find('[name=question]').val();
-      questionItem.answer = $(this).find('[name=answer]').val();
-      questionItem.explanation = $(this).find('[name=explanation]').val();
-      var questionChoices = [];
-      $(this).find('.choice-container').find('input').each(function() {
-        questionChoices.push($(this).val());
-      })
-      questionItem.choices = JSON.stringify(questionChoices);
-      questionList.push(questionItem);
-    });
-    fullQuestionList.questionList = questionList;
+  function getCategoryData() {
+      categories_array = [];
+      $('.quiz-categories option:selected').each(function() {
+        categories_array.push(parseInt($(this).attr('category-id')));
+      });
+      return categories_array;
+  };
 
-    $.ajax({
-      method: 'POST',
-      url: '/quizzes/questions',
-      data: JSON.stringify(fullQuestionList),
-      contentType: "application/json",
-    }).then(function(result) {});
-  }
+  function getQuestionData() {
+      var questionList = [];
+      $('.question').each(function() {
+        var questionItem = {};
+        questionItem.question = $(this).find('[name=question]').val();
+        questionItem.correct_answer = $(this).find('[name=answer]').val();
+        questionItem.explanation = $(this).find('[name=explanation]').val();
+        var questionChoices = [];
+        $(this).find('.choice-container').find('input').each(function() {
+          questionChoices.push($(this).val());
+        })
+        questionItem.choice = JSON.stringify(questionChoices);
+        questionList.push(questionItem);
+      });
+      return questionList;
+  };
 
   // Prevent New Quiz from submitting form unless through AJAX
   $('.new-quiz').on('click', 'button', function(e) {
@@ -98,10 +84,18 @@ $(document).ready(function() {
     $(this).parent().remove();
   });
 
-
   // Create Quiz
   $('body').on('click', '.submit-quiz', function() {
-    createQuiz();
-  });
+    var data = {
+      quiz: JSON.stringify(getQuizData()),
+      categories: JSON.stringify(getCategoryData()),
+      questions: JSON.stringify(getQuestionData()),
+    };
+
+    $.post('/api/quiz/new', data)
+    .then(function(response){
+      console.log(response);
+    });
+  }); // closes .submit-quiz event
 
 });
