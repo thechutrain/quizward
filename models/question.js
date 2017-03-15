@@ -7,10 +7,12 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false,
         },
         choice: {
-          type: DataTypes.TEXT,
+          // type: DataTypes.TEXT,
+          type: DataTypes.JSON,
         },
         correct_answer: {
-          type: DataTypes.STRING,
+          // type: DataTypes.STRING,
+          type: DataTypes.JSON,
         },
         explanation: {
           type: DataTypes.TEXT,

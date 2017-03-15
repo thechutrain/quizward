@@ -15,6 +15,9 @@ router.get('/', function(req, res) {
   res.render('api.handlebars');
 })
 
+
+
+
 // ====================== CATEGORY routes ====================== //
 // GET for category ----------------------//
 router.get('/categories/:id?', (req, res) => {
@@ -29,6 +32,8 @@ router.get('/categories/:id?', (req, res) => {
     });
   }
 });
+
+
 
 // ====================== USER routes  ====================== //
 // GET for user ----------------------//
@@ -99,6 +104,22 @@ router.get('/users/:user_id/:searchTerm?', (req, res) => {
 }); // closes router
 
 
+
+// ====================== USERQUIZ routes  ====================== //
+// POST for UserQuiz ----------------------//
+router.post('/userquiz', (req, res) => {
+  var user_id = req.body.user_id;
+  var quiz_id = req.body.quiz_id;
+  var userAnswers = req.body.user_answers;
+  console.log(typeof userAnswers);
+  Models.UserQuiz.create({ user_id, quiz_id })
+  .then((results) => {
+    res.json(results);
+  })
+});
+
+
+
 // ====================== QUIZ routes  ====================== //
 // GET for quiz ----------------------//
 router.get('/quiz/:id?', (req, res) => {
@@ -134,7 +155,6 @@ router.get('/quiz/:id/questions', (req, res) => {
     })
   }
 });
-
 
 // gets all quizzess based on category id
 router.get('/quiz/by-category/:category_id?', (req, res) => {
