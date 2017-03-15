@@ -1,4 +1,12 @@
 <H1>SINGLE QUIZ</H1>
 <h2 class="category-title">{{quiz.name}}</h2>
 <p class="category-desc">{{quiz.description}}</p>
-<img src="/assets/images/uploads/{{category.image}}" />
+
+<form quiz-id="{{quiz.id}}" class="take-quiz">
+  <div class="questions-container">
+
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg">Finish Quiz</button>
+
+  </form>

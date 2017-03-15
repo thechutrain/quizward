@@ -34,10 +34,10 @@ router.get('/:id', function(req, res) {
     var quiz = {
       quiz: results
     };
-    res.json(quiz);
-    // res.render('quizzes/single', quiz);
+    res.render('quizzes/single', quiz);
   });
 });
+
 
 
 // =========== POST ROUTES ===========

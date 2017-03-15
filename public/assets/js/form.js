@@ -24,36 +24,36 @@ $(document).ready(function() {
   }
 
   // ------------ Alan's Helper functions ----------------
-  function getQuizData(){
-      var newQuiz = {};
-      newQuiz.name = $("[name=name]").val();
-      newQuiz.description = $('.quiz-description').val();
-      return newQuiz;
+  function getQuizData() {
+    var newQuiz = {};
+    newQuiz.name = $("[name=name]").val();
+    newQuiz.description = $('.quiz-description').val();
+    return newQuiz;
   };
 
   function getCategoryData() {
-      categories_array = [];
-      $('.quiz-categories option:selected').each(function() {
-        categories_array.push(parseInt($(this).attr('category-id')));
-      });
-      return categories_array;
+    categories_array = [];
+    $('.quiz-categories option:selected').each(function() {
+      categories_array.push(parseInt($(this).attr('category-id')));
+    });
+    return categories_array;
   };
 
   function getQuestionData() {
-      var questionList = [];
-      $('.question').each(function() {
-        var questionItem = {};
-        questionItem.question = $(this).find('[name=question]').val();
-        questionItem.correct_answer = $(this).find('[name=answer]').val();
-        questionItem.explanation = $(this).find('[name=explanation]').val();
-        var questionChoices = [];
-        $(this).find('.choice-container').find('input').each(function() {
-          questionChoices.push($(this).val());
-        })
-        questionItem.choice = JSON.stringify(questionChoices);
-        questionList.push(questionItem);
-      });
-      return questionList;
+    var questionList = [];
+    $('.question').each(function() {
+      var questionItem = {};
+      questionItem.question = $(this).find('[name=question]').val();
+      questionItem.correct_answer = $(this).find('[name=answer]').val();
+      questionItem.explanation = $(this).find('[name=explanation]').val();
+      var questionChoices = [];
+      $(this).find('.choice-container').find('input').each(function() {
+        questionChoices.push($(this).val());
+      })
+      questionItem.choice = JSON.stringify(questionChoices);
+      questionList.push(questionItem);
+    });
+    return questionList;
   };
 
   // Prevent New Quiz from submitting form unless through AJAX
@@ -93,9 +93,9 @@ $(document).ready(function() {
     };
 
     $.post('/api/quiz/new', data)
-    .then(function(response){
-      console.log(response);
-    });
+      .then(function(response) {
+        console.log(response);
+      });
   }); // closes .submit-quiz event
 
 });
