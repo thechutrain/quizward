@@ -10,9 +10,10 @@
     <ul class="list-group">
       <li class="list-group-item">
         <h4> <span class="label label-success">GET</span> <code>'api/categories/:id?' </code></h4>
-        <p> If not given an id (ex. GET "/api/categories") returns an array of all category objects in database</p>
-        <p> When given an id, (ex. GET "/api/categories/2") returns a single category object</p>
-        <p> *If you request a single category object that doesn't exist, returns NULL</p>
+        <p>Gets all the categories, or given an id returns a specific category</p>
+        <p>Returns either an array of category objects, OR a single category object (when given :id) 
+          OR <code>null</code> if (there is no category for the given id)
+        </p>
       </li>
 
     </ul>
@@ -30,15 +31,23 @@
     <ul class="list-group">
       <li class="list-group-item">
         <h4> <span class="label label-success">GET</span> <code>'api/users/:id?' </code></h4>
-        <p> If not given an id (ex. GET "/api/users") returns an array of all users objects in database</p>
-        <p> When given an id, (ex. GET "/api/users/2") returns a single category object</p>
-        <p> *If you request a single category object that doesn't exist, returns NULL</p>
-        <p>* Excludes the password_hash for return all users, but not for indiviual user</p>
+        <p>Gets all the users, or given an id returns a specific user</p>
+        <p> Returns either an array of user objects, OR a single user object (when given :id) 
+          OR <code>null</code> if (there is no user for the given id)
+        </p>
+        <p>* Excludes the password_hash for return all users objects</p>
       </li>
       <li class="list-group-item">
-        <h4> <span class="label label-success">GET</span> <code>'api/users/:user_id/categories' </code></h4>
-        <p> Returns a User object, that has a property of <code>Categories</code> which is an array of category objects</p>
-        <p> * if its not a valid user_id, it will return NULL </p>
+        <h4> <span class="label label-success">GET</span> <code>'api/users/:user_id/:searchTerm' </code></h4>
+        <p>Gets a user object & associated table data based off the given <code>:searchTerm</code></p>
+        <p>Options for <code>:searchTerm</code> include:</p>
+        <ul>
+          <li><code>categories {array}</code> : returns a user object with a key of "Categories" </li>
+          <li><code>quizzess-taken {array}</code>  : returns a user object with a key of "Quizzes" </li>
+          <li><code>quizzess-made {array}</code> : returns a user object with a key of "QuizzessMade" </li>
+          <li><code>posts {array}</code> : returns a user object with a key of "Posts"</li>
+        </ul>
+        <p> * code is written forgivingly, so if a searchTerm doesn't match or exist, a simple user object is returned if they exist. And null if they don't exist </p>
       </li>
 
     </ul>
@@ -60,6 +69,24 @@
         <p>When a specified id is given, a quiz object is returned or null</p> 
       </li>
       <li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> <code>'api/quiz/:id/questions' </code></h4>
+        <p>Gets a specified quiz by the id, and the "Questions" associated with that quiz</p>
+        <p>Returns a quiz object (if valid id), and has a key of <code>"Questions" {array}</code> of question objects</p>
+        <p>Question objects have the following important keys:</p>
+        <ul>
+          <li><code>question {string}</code> : the actual question</li>
+          <li><code>choice {string}</code> : JSON.stringified array of the choices</li>
+          <li><code>correct_answer {string}</code> : the correct answer</li>
+          <li><code>explanation {string}</code> : explanation for the answer (optional)</li>
+        </ul>
+      </li>
+      <li class="list-group-item">
+        <h4> <span class="label label-success">GET</span> <code>'api/quiz/by-category/:id?' </code></h4>
+        <p>Gets quizzess by category id</p>
+        <p>the id is optional, but when not given it will just return all the quizzess</p>
+        <p>if there are no quizzess made for that category or that category id is invalid, you'll get an empty array</p> 
+      </li>
+      <li class="list-group-item">
         <h4> <span class="label label-info">POST</span> <code>'api/quiz/new'</code></h4>
         <p> Data should be an object with three keys:</p>
         <p><code> var data = { quiz, categories, questions } </code></p>
@@ -70,9 +97,7 @@
         <p> Returns a User object, that has a property of <code>Categories</code> which is an array of category objects</p>
         <p> * if its not a valid user_id, it will return NULL </p>
       </li>--}}
-
     </ul>
-
   </div>
 </div>
 
