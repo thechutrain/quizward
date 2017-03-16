@@ -23,7 +23,7 @@ $(document).ready(function() {
 
       var questionTitle = $('<label>').attr('for', i).html(q.Questions[i].question);
       singleQuestion.append(questionTitle);
-      var choices = JSON.parse(q.Questions[i].choice);
+      var choices = JSON.parse(JSON.parse(q.Questions[i].choice));
 
       for (var k = 0; k < choices.length; k++) {
         var radioGroup = $('<div>').addClass('radio');

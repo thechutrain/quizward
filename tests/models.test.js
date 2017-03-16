@@ -16,6 +16,21 @@ function addRow(rowObj, modelName){
 // =========== Test Variables ===============
 
 // USERS
+var admin = {
+  username: 'admin',
+  email: 'admin@gmail.com',
+  password_hash: '$2a$10$Bqr4655MoYjR6kJ2zyc5tuxfKQddTLhAvmBzrRUBWfGvfBkUWWIpO',
+  isAdmin: true,
+}
+
+var user_a = {
+  id: '-1',
+  username: 'anonymous',
+  email: 'anonymous',
+  password_hash: 'anonymous',
+  isAdmin: false,
+}
+
 var user_1 = {
   username: 'food guru',
   email: 'foodie@gmail.com',
@@ -102,6 +117,7 @@ var post_1 = {
 Models.sequelize.sync({ force: true }).then(function(){
   // 
   Promise.all([
+    addRow(admin, 'User'),
     addRow(user_1, 'User'),
     addRow(user_2, 'User'),
     addRow(user_3, 'User'),
