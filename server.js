@@ -16,6 +16,7 @@ var passport = require('./config/passport');
 var passController = require('./controllers/passController');
 var apiController = require('./controllers/apiController');
 var userController = require('./controllers/userController');
+var adminController = require('./controllers/adminController');
 
 // Create app
 var app = express();
@@ -59,6 +60,7 @@ app.use('/categories', categoryController);
 app.use('/auth', passController);
 app.use('/api', apiController);
 app.use('/user', userController);
+app.use('/admin', adminController);
 
 
 // Create Server
