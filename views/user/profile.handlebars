@@ -1,0 +1,52 @@
+{{#if user }}
+<h2>Welcome back <strong>{{ user.username }} </strong>!</h2>
+<p> User id: {{ user.id }}</p>
+{{ else }}
+<h2>Hello <strong> Guest </strong></h2>
+{{/if}}
+
+<h4> This is the Profile page: </h4>
+
+{{!-- Avatar & Setting Row --}}
+<div class="row">
+  {{!-- Avatar / Profile img--}}
+  <div class="col-xs-12 col-sm-3">
+    <img src="../assets/images/avatars/chicken.svg" alt="" class="img-responsive img-thumbnail">
+    <small>
+      <div>Icons made by <a href="http://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    </small>
+  </div>
+  
+  {{!-- Profile info--}}
+  <div class="col-xs-12 col-sm-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">Profile:</div>
+      <div class="panel-body">
+        <p>Your profile here ...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Categories You're following && Quizzes taken  --}}
+<div class="row">
+  {{!-- Recent Quizzes you've taken --}}
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Recent Achievements: </div>
+      <div class="panel-body">
+        <p>Your profile here ...</p>
+      </div>
+    </div>
+  </div>
+  {{!-- categories you're following --}}
+    <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Your Favorite Categories:</div>
+      <div class="panel-body">
+        <p>Your profile here ...</p>
+      </div>
+    </div>
+  </div>
+
+</div> {{!-- closes Categories + Quiz ROW--}}
