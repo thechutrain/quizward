@@ -108,16 +108,19 @@ router.get('/users/:user_id/:searchTerm?', (req, res) => {
 // ====================== USERQUIZ routes  ====================== //
 // POST for UserQuiz ----------------------//
 router.post('/userquiz', (req, res) => {
+  var score = req.body.score;
+  var quizAnswers = JSON.parse(req.body.quizAnswers);
   var user_id = req.user ? req.user.id : "-1";
   var quiz_id = req.body.quiz_id;
   var userAnswers = JSON.parse(req.body.userAnswers);
   console.log(typeof userAnswers);
   Models.UserQuiz.create({
+    score: score,
     user_id: user_id,
     quiz_id: quiz_id,
     userAnswers: userAnswers
   }).then((results) => {
-    res.json(results);
+    res.json({ url: "/quizzes/" + quiz_id + "/results" });
   })
 });
 
@@ -182,6 +185,7 @@ router.post('/quiz/new', (req, res) => {
     var insertData = categories.map((category_id) => { return ({ category_id, quiz_id }) });
     return Models.QuizCategory.bulkCreate(insertData);
   };
+
   function insertQuestions(questions, quiz_id) {
     var insertData = questions.map((question) => {
       question.quiz_id = quiz_id;
@@ -201,18 +205,18 @@ router.post('/quiz/new', (req, res) => {
     res.json({ errors: true });
   } else {
     Models.Quiz.create({
-      name: quiz.name,
-      description: quiz.description,
-      made_by: req.user ? req.user.id : "-1",
-    })
-    .then((quiz)=> {
-      if (!quiz) throw new Error('Could not make a quiz');
-      // quizObj = quiz;
-      var category_promise = insertCategories(categories, quiz.id);
-      var question_promise = insertQuestions(questions, quiz.id);
-      return Promise.all([category_promise, question_promise]);
-    })
-    .then((results) => res.json(results)); // ends Quiz.creation 
+        name: quiz.name,
+        description: quiz.description,
+        made_by: req.user ? req.user.id : "-1",
+      })
+      .then((quiz) => {
+        if (!quiz) throw new Error('Could not make a quiz');
+        // quizObj = quiz;
+        var category_promise = insertCategories(categories, quiz.id);
+        var question_promise = insertQuestions(questions, quiz.id);
+        return Promise.all([category_promise, question_promise]);
+      })
+      .then((results) => res.json(results)); // ends Quiz.creation 
   }
 });
 

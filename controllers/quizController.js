@@ -31,13 +31,37 @@ router.get('/new', function(req, res) {
 });
 
 // needs to be adjusted to associate with each individual quiz
-router.get('/results', function(req, res) {
-  Models.Post.findAll({}).then((results) => {
-    var posts = {
-      posts: results
+router.get('/:id/results', function(req, res) {
+  var quizId = req.params.id;
+  var userId = req.user ? req.user.id : "-1";
+  Models.Quiz.findOne({
+    where: { id: quizId },
+    include: [{
+      model: Models.UserQuiz,
+      where: { user_id: userId, quiz_id: quizId }
+    }, {
+      model: Models.Question,
+    }, {
+      model: Models.Category,
+      through: Models.QuizCategory,
+    }, {
+      model: Models.Post,
+      where: { quiz_id: quizId }
+    }]
+  }).then((results) => {
+    var quizResults = {
+      quizResults: results
     };
-    res.render('quizzes/results', posts);
+    // res.json(quizResults);
+    res.render('quizzes/results', quizResults);
   });
+
+  // Models.Post.findAll({}).then((results) => {
+  //   var posts = {
+  //     posts: results
+  //   };
+  //   res.render('quizzes/results', posts);
+  // });
 });
 
 router.get('/api/new', function(req, res) {
@@ -98,7 +122,7 @@ router.post('/comment', (req, res) => {
     // requires there to be at least one entry in the user and quiz tables
     user_id: 1,
     quiz_id: 1
-  }).then(function(dbPost){
+  }).then(function(dbPost) {
     console.log(dbPost);
     res.redirect('results');
   });
