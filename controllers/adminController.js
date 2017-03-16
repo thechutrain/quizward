@@ -70,7 +70,7 @@ router.post("/create/category", function(req, res) {
 router.get("/category/search/:categoryname", function(req,res){
   db.Category.findOne({
     where: {
-      categoryname: req.params.categoryname
+      name: req.params.categoryname
     },
   }).then(function(data){
     res.json(data);
@@ -80,10 +80,10 @@ router.put("/modifycategory", function(req, res) {
   console.log(req.body);
   db.Category.update({
     description: req.body.description,
-    img_url: req.body.img_url
+    image: req.body.img_url
     },{
       where: {
-        categoryname: req.body.name
+        name: req.body.name
       },
     }).then(function(dbUser) {
       res.json(dbUser);
