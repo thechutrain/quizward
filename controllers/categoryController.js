@@ -41,10 +41,17 @@ router.get('/new', function(req, res) {
 
 router.get('/:id', function(req, res) {
   var catId = req.params.id;
-  Models.Category.findOne({ where: { id: catId } }).then((results) => {
+  Models.Category.findOne({
+    where: { id: catId },
+    include: [{
+      model: Models.Quiz,
+      through: Models.QuizCategory,
+    }]
+  }).then((results) => {
     var category = {
       category: results
     };
+    // res.json(category);
     res.render('categories/single', category);
   });
 

@@ -1,4 +1,27 @@
-<H1>SINGLE CAT</H1>
-<h2 class="category-title">{{category.name}}</h2>
-<p class="category-desc">{{category.description}}</p>
-<img src="/assets/images/uploads/{{category.image}}"/>
+<div class="jumbotron single-category">
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="thumbnail">
+      <img src="/assets/images/uploads/{{category.image}}" class="category-image" />
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <h2 class="category-title">{{category.name}}</h2>
+      <p class="category-desc">{{category.description}}</p>
+    </div>
+
+  </div>
+</div>
+
+<h2>Quizzes that belong to this category.</h2>
+<div class="list-group">
+  {{#each category.Quizzes}}
+  <div class="col-xs-12 col-sm-6 col-md-6 quiz-background">
+  <a class="list-group-item quiz-info" href="/quizzes/{{id}}">
+    <h4 class="list-group-item-heading">{{name}}</h4>
+    <p class="list-group-item-text">{{description}}</p>
+  </a>
+  </div>
+  {{/each}}
+</div>

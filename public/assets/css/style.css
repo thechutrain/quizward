@@ -11,3 +11,7 @@ body {
 ul.navbar-right a {
   font-weight: 700
 }
+
+.category-image {
+  max-width: 100%;
+}

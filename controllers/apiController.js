@@ -108,12 +108,15 @@ router.get('/users/:user_id/:searchTerm?', (req, res) => {
 // ====================== USERQUIZ routes  ====================== //
 // POST for UserQuiz ----------------------//
 router.post('/userquiz', (req, res) => {
-  var user_id = req.body.user_id;
+  var user_id = req.user ? req.user.id : "-1";
   var quiz_id = req.body.quiz_id;
-  var userAnswers = req.body.user_answers;
+  var userAnswers = JSON.parse(req.body.userAnswers);
   console.log(typeof userAnswers);
-  Models.UserQuiz.create({ user_id, quiz_id })
-  .then((results) => {
+  Models.UserQuiz.create({
+    user_id: user_id,
+    quiz_id: quiz_id,
+    userAnswers: userAnswers
+  }).then((results) => {
     res.json(results);
   })
 });
