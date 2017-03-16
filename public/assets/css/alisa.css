@@ -1,0 +1,13 @@
+
+.comment-div{
+  padding: 5px;
+  margin: 2px 0px 2px 0px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #333;
+  border-radius: 5px;
+}
+
+.comment-div p{
+  padding: 5px;
+}

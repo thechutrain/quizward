@@ -1,0 +1,25 @@
+<!--quiz results go here-->
+
+
+  <h3>Comments</h3>
+
+  {{#each posts}}
+  <div class="comment-div">
+    <p>{{comment}}</p>
+  </div>
+  {{/each}}
+
+
+
+<!-----------------New comment form------------------------>
+<h3> Add a New Comment </h3>
+<!--sends inputs to router.post("/comment") in quizController-->
+<form action="/quizzes/comment" method="POST">
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <br>
+    <textarea placeholder="type text here" class="form-control" rows="10" name="comment"></textarea>
+    <br>
+    <button type="submit" class="btn btn-success submit">Submit</button>
+  </div>
+</form>
