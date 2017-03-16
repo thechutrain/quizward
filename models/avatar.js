@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
           is: /.(svg)$/, // only accept svg files
         }
       },
-      level: {
+      level_required: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
         validate: {
