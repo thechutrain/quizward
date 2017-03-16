@@ -22,7 +22,7 @@ $(document).ready(function() {
     quizAnswers = [];
     var questionContainer = $('.questions-container');
     for (var i = 0; i < q.Questions.length; i++) {
-      quizAnswers.push(q.Questions[i].correct_answer);
+      quizAnswers.push(JSON.parse(q.Questions[i].correct_answer));
       var singleQuestion = $('<div>').addClass('form-group').attr('question-number', i);
       console.log(quizAnswers);
       var questionTitle = $('<label>').attr('for', i).html(q.Questions[i].question);

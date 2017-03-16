@@ -46,7 +46,6 @@ router.get('/:id/results', function(req, res) {
       through: Models.QuizCategory,
     }, {
       model: Models.Post,
-      where: { quiz_id: quizId }
     }]
   }).then((results) => {
     var quizResults = {
