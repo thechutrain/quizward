@@ -1,0 +1,15 @@
+
+<ul>
+  {{#each category}}
+    <div class ="row" id = "category-{{this.id}}">
+      <img class = "picDisplay" src="{{this.image}}" height = '150px' width ='auto'>
+      <a class ="nameDisplay" href="">{{this.name}}</a><br>
+      <ul class = "descriptionDisplay">Description : {{this.description}}</ul>
+      <ul class = "idDisplay">Unique Category Id : {{this.id}}</ul>
+      <ul class = "createdDisplay"> Created At: {{this.created_at}}</ul>
+      <ul class = "updatedDisplay"> Last Modifed At: {{this.updated_at}}</ul>
+      <button data-uid ="{{this.id}}" class ="delete-category-button">Delete Category</button>
+      <button data-uid = "{{this.id}}" class = "update-category-button">Modify Category </button>      
+    </div>
+  {{/each}}
+</ul>

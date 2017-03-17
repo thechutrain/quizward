@@ -1,5 +1,11 @@
-<div class="list-group">
-  {{#each categories}}
-    <a class="list-group-item" href="/categories/{{id}}">{{name}}</a>
-  {{/each}}
+<div class="page-header">
+  <h1>Pick a category.</h1>
+  <h4>Select a category and see what quizzes to take!</h4>
 </div>
+  <div class="row">
+  {{#each categories}}
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <a class="list-group-item" href="/categories/{{id}}">{{name}}</a>
+  </div>
+  {{/each}}
+  </div>

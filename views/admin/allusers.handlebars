@@ -1,0 +1,16 @@
+
+<ul>
+  {{#each user}}
+  <div class ="row" id = "category-{{this.id}}">
+      <img class = "picDisplay" src="{{this.img_url}}" height = '150px' width ='auto'>
+      <a class ="nameDisplay" href="">{{this.username}}</a><br>
+      <ul class = "emailDisplay">Email : {{this.email}}</ul>
+      <ul class = "idDisplay">Unique User Id : {{this.id}}</ul>
+      <ul class = "adminDisplay"> Admin: {{this.isAdmin}}</ul>
+      <ul class = "createdDisplay"> Created At: {{this.created_at}}</ul>
+      <ul class = "updatedDisplay"> Last Modifed At: {{this.updated_at}}</ul>
+      <button data-uid ="{{this.id}}" class ="delete-user-button">Delete User</button> 
+      <button data-uid = "{{this.id}}" class = "update-user-button">Modify User </button>            
+    </div>
+  {{/each}}
+</ul>

@@ -21,8 +21,8 @@ router.get('/', function(req, res) {
     var quizzes = {
       quizzes: results
     };
-    // res.json(quizzes);
-    res.render('quizzes/all', quizzes);
+    res.json(quizzes);
+    // res.render('quizzes/all', quizzes);
   });
 });
 
@@ -101,7 +101,7 @@ router.post('/create', jsonParse, (req, res) => {
 
 // create new comment
 router.post('/comment', (req, res) => {
-  var userId = req.user ? req.user.id : "-1";
+  var userId = req.user ? req.user.id : "1";
   Models.Post.create({
     comment: req.body.comment,
     user_id: userId,

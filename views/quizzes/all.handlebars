@@ -1,7 +1,11 @@
+<div class="page-header">
+  <h1>Take a quiz!</h1>
+  <h4>Select a quiz to take. After you finish, you can see how you did and discuss with others who have taken it.</h4>
+</div>
 <div class="list-group">
-  <div class="row">
+  <div class="row flexy">
   {{#each quizzes}}
-  <div class="col-xs-12 col-sm-6 col-md-6 quiz-background">
+  <div class="col-xs-12 col-sm-6 col-md-4 quiz-background">
     <a class="list-group-item quiz-info" href="/quizzes/{{id}}">
       <h4 class="list-group-item-heading">{{name}}</h4>
       <p class="list-group-item-text">{{description}}</p>

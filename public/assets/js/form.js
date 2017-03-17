@@ -26,8 +26,8 @@ $(document).ready(function() {
   // ------------ Alan's Helper functions ----------------
   function getQuizData() {
     var newQuiz = {};
-    newQuiz.name = $("[name=name]").val();
-    newQuiz.description = $('.quiz-description').val();
+    newQuiz.name = $("[name=name]").val().trim();
+    newQuiz.description = $('.quiz-description').val().trim();
     return newQuiz;
   };
 
@@ -43,12 +43,12 @@ $(document).ready(function() {
     var questionList = [];
     $('.question').each(function() {
       var questionItem = {};
-      questionItem.question = $(this).find('[name=question]').val();
-      questionItem.correct_answer = $(this).find('[name=answer]').val();
-      questionItem.explanation = $(this).find('[name=explanation]').val();
+      questionItem.question = $(this).find('[name=question]').val().trim();
+      questionItem.correct_answer = $(this).find('[name=answer]').val().trim();
+      questionItem.explanation = $(this).find('[name=explanation]').val().trim();
       var questionChoices = [];
       $(this).find('.choice-container').find('input').each(function() {
-        questionChoices.push($(this).val());
+        questionChoices.push($(this).val().trim());
       })
       questionItem.choice = JSON.stringify(questionChoices);
       questionList.push(questionItem);

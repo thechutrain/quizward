@@ -110,7 +110,7 @@ router.get('/users/:user_id/:searchTerm?', (req, res) => {
 router.post('/userquiz', (req, res) => {
   var score = req.body.score;
   var quizAnswers = JSON.parse(req.body.quizAnswers);
-  var user_id = req.user ? req.user.id : "-1";
+  var user_id = req.user ? req.user.id : "1";
   var quiz_id = req.body.quiz_id;
   var userAnswers = JSON.parse(req.body.userAnswers);
   console.log(typeof userAnswers);
@@ -127,7 +127,7 @@ router.post('/userquiz', (req, res) => {
 router.get('/quiz/:id/results', function(req, res) {
   var quizId = req.params.id;
   console.log('QUIZ ID' + quizId);
-  var userId = req.user ? req.user.id : "-1";
+  var userId = req.user ? req.user.id : "1";
   var quizResults;
   Models.Quiz.findOne({
     where: { id: quizId },

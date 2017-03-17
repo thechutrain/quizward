@@ -1,17 +1,186 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i|Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i|Ubuntu:400,700');
 body {
   font-family: 'Open Sans', sans-serif;
+  background: rgba(8, 16, 102, 1);
+  background: -moz-linear-gradient(top, rgba(8, 16, 102, 1) 0%, rgba(48, 208, 208, 1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(8, 16, 102, 1)), color-stop(100%, rgba(48, 208, 208, 1)));
+  background: -webkit-linear-gradient(top, rgba(8, 16, 102, 1) 0%, rgba(48, 208, 208, 1) 100%);
+  background: -o-linear-gradient(top, rgba(8, 16, 102, 1) 0%, rgba(48, 208, 208, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(8, 16, 102, 1) 0%, rgba(48, 208, 208, 1) 100%);
+  background: linear-gradient(to bottom, rgba(8, 16, 102, 1) 0%, rgba(48, 208, 208, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#081066', endColorstr='#30d0d0', GradientType=0);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.jumbotron {
+  background: none;
+}
+
+.main-body {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  margin-bottom: 75px;
+  padding: 20px 30px 30px 30px;
 }
 
 .logo-title {
+  color: white;
+  font-weight: 700;
   font-size: 5rem;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-ul.navbar-right a {
-  font-weight: 700
+.navbar-right>li>a {
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  font-size: 16px;
+  border-radius: 60px;
+  transition: all ease-in-out;
+  transition-duration: .25s;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 3px;
+}
+
+.navbar-right>li>a:hover {
+  color: #3b3b3b;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.navbar-right .dropdown-menu {
+  right: 3px
+}
+
+.nav .open>a,
+.nav .open>a:focus,
+.nav .open>a:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px 15px 0 0;
+  border: none;
+  color: #3b3b3b
+}
+
+.navbar-nav>li>.dropdown-menu {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 0;
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  background: none;
+  transition: all ease-in-out;
+  transition-duration: .25s;
 }
 
 .category-image {
   max-width: 100%;
+}
+
+.list-group-item {
+  font-size: 24px;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  border: 2px solid rgba(0, 0, 0, .7);
+  background: none;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 10px;
+}
+
+a.list-group-item,
+button.list-group-item {
+  color: #3b3b3b
+}
+
+.list-group-item:last-child,
+.list-group-item:last-child {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.page-header {
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.7);
+}
+
+.form-control {
+  margin-bottom: 10px
+}
+
+.footer {
+  font-size: 15px;
+  color: #fff;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.footer a i {
+  font-size: 65px;
+}
+
+
+/*FLEXBOX STYLING FOR ROWS*/
+
+.flexy {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexy>[class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand. 
+* Use a preprocesser with autoprefixing.
+*/
+
+.flexy {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flexy>[class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }

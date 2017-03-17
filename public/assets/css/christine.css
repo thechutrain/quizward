@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.logo-title {
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.logo-title:hover {
+  color: white;
+}
+
+.picDisplay {
+  float: left;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.nameDisplay {
+  float: left;
+}
+
+.api .panel-heading,
+.api .panel-body {
+  background-color: #276cb3;
+  border-bottom: 0px;
+}
+
+.api.panel-title {
+  color: white;
+}
+
+.adminPageText {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.adminPageHr {
+  border-color: orange;
+}
+
+.adminButtonHolder {
+  margin-top: 20px;
+  text-align: center;
+}

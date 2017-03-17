@@ -7,20 +7,22 @@ var db = require("../models");
 var router = express.Router();
 
 router.get("/", function(req,res){
-  res.render('admin')
+  res.render('admin/admin')
 });
 
 // Routes
 // =============================================================
 // User Routes
 router.get("/users", function(req, res) {
-  db.User.findAll({}).then(function(dbUser) {
-    res.json(dbUser);
+  db.User.findAll({
+      attributes: { exclude: ['password_hash'] },
+    }).then(function(user) {
+    res.render('admin/allusers', {user: user});
   });
 });
 router.post("/create/user", function(req, res) {
   db.User.create(req.body).then(function(dbUser) {
-    res.redirect("/");
+    res.redirect("/admin");
   });
 });
 router.get("/user/search/:username", function(req,res){
@@ -31,14 +33,14 @@ router.get("/user/search/:username", function(req,res){
   }).then(function(data){
     res.json(data);
   });
-})
-router.delete("/user/:id", function(req, res) {
+});
+router.delete("/deleteuser", function(req, res) {
   db.User.destroy({
     where: {
-      id: req.params.id
+      id: req.body.id
     }
-  }).then(function(dbUser) {
-    res.json(dbUser);
+  }).then(function(user) {
+    res.json(user)
   });
 });
 
@@ -58,13 +60,13 @@ router.put("/modifyuser", function(req, res) {
 });
 // Category Routes
 router.get("/categories", function(req, res) {
-  db.Category.findAll({}).then(function(dbCategory) {
-    res.json(dbCategory);
+  db.Category.findAll({}).then(function(category) {
+    res.render("admin/allcategories", {category: category});
   });
 });
 router.post("/create/category", function(req, res) {
   db.Category.create(req.body).then(function(dbCategory) {
-    res.redirect("/");
+    res.redirect("/admin");
   });
 });
 router.get("/category/search/:categoryname", function(req,res){
@@ -80,7 +82,7 @@ router.put("/modifycategory", function(req, res) {
   console.log(req.body);
   db.Category.update({
     description: req.body.description,
-    image: req.body.img_url
+    image: req.body.image
     },{
       where: {
         name: req.body.name
@@ -89,6 +91,16 @@ router.put("/modifycategory", function(req, res) {
       res.json(dbUser);
     });
 
+});
+
+router.delete("/deletecategory", function(req, res) {
+  db.Category.destroy({
+    where: {
+      id: req.body.id
+    }
+  }).then(function(category) {
+    res.redirect("/admin");
+  });
 });
 // Quiz Routes
 router.post("/create/quiz", function(req, res) {

@@ -1,5 +1,9 @@
-<div class="col-sm-12 col-md-8">
+<div class="page-header">
   <h1>Add a new quiz.</h1>
+  <h4>Make sure to put a name and at least two choices for each question!</h4>
+</div>
+<div class="col-sm-12 col-md-8">
+  
   <form class="new-quiz">
   {{!----}}
     <div class="form-group ">
@@ -9,6 +13,7 @@
   {{!----}}
     <div class="form-group ">
       <label class="question-label" for="category">Category:</label>
+      <p class="help-block">Hold the <kbd><kbd>command/crtl</kbd> + <kbd>click</kbd></kbd> to select multiple categories.</p>
       <select multiple class="form-control quiz-categories"></select>
     </div>
   {{!----}}

@@ -46,8 +46,9 @@
           </ul>
         </li>
         <li><a href="/user">User Info</a></li>
-        <li><a href="/api">API documentation</a></li>
-        <li><a href="/auth">Settings</a></li>        
+        <li><a href="/auth">Settings</a></li> 
+        <li><a href="/auth/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a></li>
+        <li><a href="/auth/signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>       
         {{!--{{/if}}--}}
       </ul>
       </div>
@@ -58,6 +59,10 @@
   <div class="container main-body">
     {{{ body }}}
   </div>
+
+  <div class="container footer text-center">
+    <p><a href="https://github.com/thechutrain/quizward" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><br/>©2017 Team Quizward | <a href="/api">API documentation</a><br/> <a href="https://github.com/alisaschink" target="_blank">Alisa Schink</a> | <a href="https://github.com/ccho0415" target="_blank">Christine Chong</a> | <a href="https://github.com/thechutrain" target="_blank">Alan Chu</a> | <a href="https://github.com/alexrosenkranz" target="_blank">Alex Rosenkranz</a><br/></p>
+    </div>
   <script>
     function navigateHome() {
       var url = window.location.origin + "/";
@@ -66,9 +71,9 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/10a804eff0.js"></script>
   <script src="/assets/js/form.js"></script>
 	<script src="/assets/js/authForm.js"></script>
-
   <script src="/assets/js/user.js"></script>
   <script src="/assets/js/takeQuiz.js"></script>
   <script src="/assets/js/admin.js"></script>
