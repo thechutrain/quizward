@@ -1,4 +1,4 @@
-.quiz-results{
+.quiz-results {
   padding: 5px;
   margin: 0px;
   border-width: 2px;
@@ -10,32 +10,32 @@
   background-color: #ebf0fa;
 }
 
-.category-links{
+.category-links {
   color: #adc2eb;
 }
 
-.results-header{
+.results-header {
   background-color: #002266;
   color: #ffffff;
   padding: 7px 10px 7px 10px;
   margin-bottom: 0px;
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
-.comment-header{
+.comment-header {
   background-color: #002266;
   color: #ffffff;
   padding: 7px 10px 7px 10px;
   margin-bottom: 0px;
-  border-radius: 3px;
+  border-radius: 12px;
 }
 
-.username-div{
+.username-div {
   font-weight: bold;
   color: #2e5cb8;
 }
 
-.comment-div{
+.comment-div {
   padding: 5px;
   margin: 0px;
   border-width: 2px;
@@ -47,10 +47,10 @@
   background-color: #ebf0fa;
 }
 
-.comment-div p{
+.comment-div p {
   padding: 5px;
 }
 
-.comment-body{
+.comment-body {
   background-color: #ebf0fa;
 }
