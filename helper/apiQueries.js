@@ -1,4 +1,4 @@
-/** Description of this helper function here:
+/** Description of these helper function here:
  * 
  */
 
@@ -50,20 +50,28 @@ module.exports.getUser = function(num) {
   }); // end of Promise
 }; 
 
-module.exports.getUserPosts = function(num) {
+// Get's User most recent posts -- you can limit posts
+module.exports.getUserPosts = function(num, limit) {
   return new Promise((resolve, reject) => {
+    var LIMIT = limit || 5;
     var userId = parseInt(num);
-    Models.User.findOne({
-      attributes: { exclude: ['password_hash'] },
-      include: [{ model: Models.Post }],
-      where: { id: userId },
+    Models.Post.findAll({
+      attributes: { 
+        exclude: ['password_hash']
+      },
+      where: { user_id: userId },
+      order: [
+        ['updated_at', 'DESC'],
+      ],
+      limit: LIMIT,
     })
     .then((userResult) => {
       // console.dir(userResult);
       if (!userResult) {
         resolve([]); // send back empty array
       } else {
-       resolve(userResult.Posts);
+        // console.dir(userResult);
+       resolve(userResult);
       };
     })
   }); // end of promise
