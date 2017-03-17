@@ -49,7 +49,7 @@ router.get('/signout', function(req, res) {
 
 // =========== POST ROUTES ===========
 router.post('/login', passport.authenticate('local'), function(req, res) {
-  res.json({ url: '/auth' });
+  res.json({ url: '/user/profile' });
 });
 
 router.post('/signup', jsonParse, function(req, res) {

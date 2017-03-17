@@ -3,11 +3,50 @@ var bodyParser = require('body-parser');
 
 // Get access to db
 var Models = require('../models');
+var API = require('../helper/apiQueries'); // gets the API helper function file
 
 // Create Router Object & middleware
 var router = express.Router();
 var jsonParse = bodyParser.urlencoded({ extended: false });
 router.use(jsonParse);
+
+/** API VERSION 2 ... using the promise based version
+ * 
+ */
+router.get('/test/profile', function(req, res) {
+  if (req.user) {
+    var id = req.user.id;
+    API.getUser(id).then((result) => {
+      res.json(result);
+    });
+  } else {
+    res.json({ error: 'Must sign in' });
+  };
+});
+
+router.get('/test/posts', function(req, res) {
+  if (req.user) {
+    var id = req.user.id;
+    API.getUserPosts(id).then((result) => {
+      res.json(result);
+    });
+  } else {
+    res.json({ error: 'Must sign in' });
+  };
+});
+
+router.get('/test/quiz-made', function(req, res) {
+  if (req.user) {
+    var id = req.user.id;
+    API.getUserQuizMade(id).then((result) => {
+      res.json(result);
+    });
+  } else {
+    res.json({ error: 'Must sign in' });
+  };
+});
+
+// ================== END OF API VERSION 2 ================
 
 
 // API HOME  ----------------------------------- //

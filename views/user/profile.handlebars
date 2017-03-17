@@ -1,17 +1,16 @@
 {{#if user }}
 <h2>Welcome back <strong>{{ user.username }} </strong>!</h2>
-<p> User id: {{ user.id }}</p>
-{{ else }}
-<h2>Hello <strong> Guest </strong></h2>
-{{/if}}
-
-<h4> This is the Profile page: </h4>
+{{!--<p> User id: {{ user.id }}</p>--}}
 
 {{!-- Avatar & Setting Row --}}
 <div class="row">
   {{!-- Avatar / Profile img--}}
   <div class="col-xs-12 col-sm-3">
-    <img src="../assets/images/avatars/chicken.svg" alt="" class="img-responsive img-thumbnail">
+    {{#if user.Avatar}}
+      <img src="../assets/images/avatars/{{ user.Avatar.url }}" alt="" class="img-responsive img-thumbnail">
+    {{else}}
+      <img src="../assets/images/avatars/chicken.svg" alt="" class="img-responsive img-thumbnail">
+    {{/if}}
     <small>
       <div>Icons made by <a href="http://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </small>
@@ -22,7 +21,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">Profile:</div>
       <div class="panel-body">
-        <p>Your profile here ...</p>
+        <ul>
+          <li><strong>Name</strong> : {{ user.username }}</li>
+          <li><strong>Email</strong> : {{ user.email }}</li>
+          <li><strong>Date of Birth</strong> : {{ user.dob }}</li>
+          <li><strong>Are you an admin??? </strong> : {{ user.isAdmin }}</li>
+          {{!--<li><strong>Avatar </strong> : {{ user.Avatar }}</li>--}}
+        </ul>
       </div>
     </div>
   </div>
@@ -33,9 +38,17 @@
   {{!-- Recent Quizzes you've taken --}}
   <div class="col-sm-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Recent Achievements: </div>
+      <div class="panel-heading">Recent Quizzes You've Taken: </div>
       <div class="panel-body">
-        <p>Your profile here ...</p>
+        {{#if QuizMade }}
+          <p> YOU MADE A QUIZ</p>
+        {{else}}
+          <p> NO QUIZZES MADE :(</p>
+        {{/if}}
+        {{!--<ul>
+          <li><strong></strong> : </li>
+        </ul>--}}
+
       </div>
     </div>
   </div>
@@ -50,3 +63,13 @@
   </div>
 
 </div> {{!-- closes Categories + Quiz ROW--}}
+
+
+{{else}}
+<h2><span> ERROR: </span> {{ error }} </h2>
+<h4>Please Sign in <a href="/auth/login">HERE</a></h4>
+{{/if}}
+
+
+
+
