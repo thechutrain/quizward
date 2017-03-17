@@ -21,8 +21,8 @@ router.get('/', function(req, res) {
     var quizzes = {
       quizzes: results
     };
-    res.json(quizzes);
-    // res.render('quizzes/all', quizzes);
+    // res.json(quizzes);
+    res.render('quizzes/all', quizzes);
   });
 });
 
