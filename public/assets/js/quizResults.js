@@ -83,21 +83,37 @@ $(document).ready(function() {
 
 $(".comment-submit").on('click', function(e){
   e.preventDefault();
+
   var comment = $(".comment-body").val().trim();
   quizId = $('.quiz-results').attr('results-id');
 
-  var commentObj = {
-    comment: comment,
-    quiz_id: quizId
+  //form validation
+   function validateForm(){
+    var validated = true;
+    if(comment == ""){
+      validated = false;
+    }
+    return validated;
   }
+
+  if (validateForm() == true){
+    var commentObj = {
+      comment: comment,
+      quiz_id: quizId
+    }
   
-  $.post('/quizzes/comment', commentObj).then(function(results){
-    console.log(results);
-    displayResults();
-  })
+    $.post('/quizzes/comment', commentObj).then(function(results){
+      console.log(results);
+      displayResults();
+    })
+  } else {
+    alert("Comments must be at least one character long")
+  }
+
 })
 
   function printComments(r){
+    $('.comment-body').val('');
     $('.posts-container').empty();
      for (var i = 0; i < r.b.length; i++) {
       var username = r.b[i].User.username;
