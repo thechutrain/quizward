@@ -12,12 +12,12 @@ $(document).ready(function(){
   } 
 
   // 1) Get the user's info
-  var user_id = 6;
-  var url = window.location.origin + '/api/users/' + user_id;
-  console.log(url);
-  $.get(url, function(data){
-    console.log(data);
-  })
+  // var user_id = 6;
+  // var url = window.location.origin + '/api/users/' + user_id;
+  // console.log(url);
+  // $.get(url, function(data){
+  //   console.log(data);
+  // })
 
   // 2) get user's categories they're following
 
