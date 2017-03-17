@@ -65,13 +65,13 @@ module.exports.getUserPosts = function(num, limit) {
       ],
       limit: LIMIT,
     })
-    .then((userResult) => {
-      // console.dir(userResult);
-      if (!userResult) {
+    .then((userPosts) => {
+      // console.dir(userPosts);
+      if (!userPosts) {
         resolve([]); // send back empty array
       } else {
-        // console.dir(userResult);
-       resolve(userResult);
+        // console.dir(userPosts);
+       resolve(userPosts);
       };
     })
   }); // end of promise
