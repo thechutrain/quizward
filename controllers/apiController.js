@@ -289,7 +289,7 @@ router.post('/quiz/new', (req, res) => {
         var question_promise = insertQuestions(questions, quiz.id);
         return Promise.all([category_promise, question_promise]);
       })
-      .then((results) => res.json(results)); // ends Quiz.creation 
+      .then((results) => res.json({ url: "/quizzes/" })); // ends Quiz.creation 
   }
 });
 

@@ -7,6 +7,20 @@
   <p><a class="btn btn-primary" href="/auth/login" role="button">Sign In</a> <a class="btn btn-primary" href="/auth/signup" role="button">Sign Up</a></p>
   {{/if}}
 </div>
+<h2>Pick a quiz, any quiz.</h2>
+<div class="list-group">
+  <div class="row flexy">
+  {{#each quizzes}}
+  <div class="col-xs-12 col-sm-6 col-md-4 quiz-background">
+    <a class="list-group-item quiz-info" href="/quizzes/{{id}}">
+      <p class="list-group-item-heading">{{name}}</p>
+      <small class="list-group-item-text">{{description}}</small>
+      <small>Category: {{Categories.0.name}}</small>
+    </a>
+  </div>
+  {{/each}} 
+  </div>
+  </div>
 
 
 

@@ -21,7 +21,8 @@ var upload = multer({ storage: storage })
 router.get('/', function(req, res) {
   Models.Category.findAll({}).then((results) => {
     var categories = {
-      categories: results
+      categories: results,
+      user: req.user
     };
     res.render('categories/all', categories);
   });
@@ -32,7 +33,8 @@ router.get('/', function(req, res) {
 router.get('/new', function(req, res) {
   Models.User.findAll({}).then((results) => {
     var users = {
-      users: results
+      users: results,
+      user: req.user
     };
     res.render('categories/new', users);
   });
@@ -49,7 +51,8 @@ router.get('/:id', function(req, res) {
     }]
   }).then((results) => {
     var category = {
-      category: results
+      category: results,
+      user: req.user
     };
     // res.json(category);
     res.render('categories/single', category);

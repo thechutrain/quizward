@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var regex = new RegExp(/^\/quizzes\/[\d]+/, 'gi');
+  var regex = new RegExp(/^\/quizzes\/[\d]$/, 'gi');
   var proceed = regex.test(window.location.pathname);
   if (!proceed) {
     console.log("this js file won't run for this url pathname");

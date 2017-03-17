@@ -1,9 +1,10 @@
+
 <div class="page-header">
   <h1>Add a new quiz.</h1>
   <h4>Make sure to put a name and at least two choices for each question!</h4>
 </div>
 <div class="col-sm-12 col-md-8">
-  
+  {{#if user}}
   <form class="new-quiz">
   {{!----}}
     <div class="form-group ">
@@ -63,4 +64,9 @@
 
   {{!----}}
   </form>
+
+  {{else}}
+  <p>You can't make a quiz unless you're a registered user!</p>
+  <p><a class="btn btn-primary" href="/auth/login" role="button">Sign In</a> <a class="btn btn-primary" href="/auth/signup" role="button">Sign Up</a></p>
+  {{/if}}
 </div>
