@@ -3,4 +3,10 @@
   background-position: center center;
 }
 
-.quiz-info {}
+.correct-bg {
+  background: lightseagreen;
+}
+
+.wrong-bg {
+  background: lightcoral;
+}

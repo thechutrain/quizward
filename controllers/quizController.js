@@ -33,26 +33,12 @@ router.get('/new', function(req, res) {
 // needs to be adjusted to associate with each individual quiz
 router.get('/:id/results', function(req, res) {
   var quizId = req.params.id;
-  var userId = req.user ? req.user.id : "-1";
-  Models.Quiz.findOne({
-    where: { id: quizId },
-    include: [{
-      model: Models.UserQuiz,
-      where: { user_id: userId, quiz_id: quizId }
-    }, {
-      model: Models.Question,
-    }, {
-      model: Models.Category,
-      through: Models.QuizCategory,
-    }, {
-      model: Models.Post,
-    }]
-  }).then((results) => {
-    var quizResults = {
-      quizResults: results
+
+  Models.Quiz.findById(quizId).then((results) => {
+    var quiz = {
+      quiz: results
     };
-    // res.json(quizResults);
-    res.render('quizzes/results', quizResults);
+    res.render('quizzes/results', quiz);
   });
 
   // Models.Post.findAll({}).then((results) => {
