@@ -101,15 +101,13 @@ router.post('/create', jsonParse, (req, res) => {
 
 // create new comment
 router.post('/comment', (req, res) => {
+  var userId = req.user ? req.user.id : "-1";
   Models.Post.create({
     comment: req.body.comment,
-    // dummy numbers until can be tested with auth
-    // requires there to be at least one entry in the user and quiz tables
-    user_id: 1,
-    quiz_id: 1
+    user_id: userId,
+    quiz_id: req.body.quiz_id
   }).then(function(dbPost) {
-    console.log(dbPost);
-    res.redirect('results');
+    res.json(dbPost);
   });
 });
 

@@ -128,6 +128,7 @@ router.get('/quiz/:id/results', function(req, res) {
   var quizId = req.params.id;
   console.log('QUIZ ID' + quizId);
   var userId = req.user ? req.user.id : "-1";
+  var quizResults;
   Models.Quiz.findOne({
     where: { id: quizId },
     include: [{
@@ -143,11 +144,18 @@ router.get('/quiz/:id/results', function(req, res) {
       // where: { quiz_id: quizId }
     }]
   }).then((results) => {
-    var quizResults = {
-      quizResults: results
+    quizResults = {
+      a: results,
     };
-    res.json(quizResults);
-    // res.render('quizzes/results');
+    Models.Post.findAll({
+      where: { quiz_id: quizId },
+      include: {
+        model: Models.User
+      }
+    }).then(function(postResults) {
+      quizResults.b = postResults;
+      res.json(quizResults);
+    });
   });
 });
 
