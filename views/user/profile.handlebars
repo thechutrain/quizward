@@ -55,9 +55,20 @@
   {{!-- categories you're following --}}
     <div class="col-sm-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Your Favorite Categories:</div>
+      <div class="panel-heading">Recent Posts you've made: </div>
       <div class="panel-body">
-        <p>Your profile here ...</p>
+        {{#each Posts}}
+        <ul>
+          <li><strong>"{{comment}}"</strong> - <a href="/quizzes/{{quiz_id}}/results">View Quiz</a>
+          <p>When: {{created_at}}</p>
+          </li>
+          
+          {{!--{{#each this}}
+              <li> <strong>{{@key}}</strong>: {{this}}</li>
+          {{/each}}--}}
+        </ul>
+        {{/each}}
+
       </div>
     </div>
   </div>

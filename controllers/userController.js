@@ -62,7 +62,7 @@ router.get('/profile', function(req, res) {
 });
 
 
-router.get('/test/', function(req, res) {
+router.get('/profile/json', function(req, res) {
   if (req.user) {
     var id = req.user.id;
     Promise.all([
@@ -78,7 +78,7 @@ router.get('/test/', function(req, res) {
         "QuizTaken": results[3],
       };
       // res.json(returnObj);
-      console.dir(dataObj);
+      // console.dir(dataObj);
       res.json(dataObj);
     })
   } else {
