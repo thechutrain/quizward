@@ -1,5 +1,5 @@
 var express = require('express');
-var Models = require('../Models');
+var Models = require('../models');
 var bodyParser = require('body-parser');
 
 // Create Router Object & middleware
