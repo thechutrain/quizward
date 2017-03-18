@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
             })
             UserQuiz.belongsTo(models.User, {
               foreignKey: {
-                allowNull: false
+                allowNull: true,
               }
             })
           }
